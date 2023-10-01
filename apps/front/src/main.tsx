@@ -1,16 +1,15 @@
-import { StrictMode } from 'react';
+import { StrictMode, useState } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { ThemeProvider, Global, css } from '@emotion/react';
 
-import { dark } from './assets/themes';
+import { Theme, getTheme } from './assets/themes';
 import App from './app/App';
 
-const root = ReactDOM.createRoot(
-   document.getElementById('root') as HTMLElement,
-);
-root.render(
-   <StrictMode>
-      <ThemeProvider theme={dark}>
+const Main = () => {
+   const [theme] = useState<Theme>(Theme.DARK);
+
+   return (
+      <ThemeProvider theme={getTheme(theme)}>
          <Global
             styles={(props) => {
                return css`
@@ -29,5 +28,14 @@ root.render(
          />
          <App />
       </ThemeProvider>
+   );
+};
+
+const root = ReactDOM.createRoot(
+   document.getElementById('root') as HTMLElement,
+);
+root.render(
+   <StrictMode>
+      <Main />
    </StrictMode>,
 );

@@ -1,5 +1,5 @@
 import '@emotion/react';
-import { Theme } from '@emotion/react';
+import { Theme as ThemeType } from '@emotion/react';
 
 declare module '@emotion/react' {
    export interface Theme {
@@ -30,7 +30,13 @@ const base = {
    },
 };
 
-export const light: Theme = {
+export enum Theme {
+   DARK = 'dark',
+
+   LIGHT = 'light',
+}
+
+export const light: ThemeType = {
    colors: {
       ...base.colors,
       background: base.colors.white,
@@ -43,7 +49,7 @@ export const light: Theme = {
    },
 };
 
-export const dark: Theme = {
+export const dark: ThemeType = {
    colors: {
       ...base.colors,
       background: base.colors['dark-grey'],
@@ -54,4 +60,14 @@ export const dark: Theme = {
       red: '#F35673',
       green: '#00FEA3',
    },
+};
+
+export const getTheme = (theme: Theme): ThemeType => {
+   switch (theme) {
+      case Theme.LIGHT:
+         return light;
+      case Theme.DARK:
+      default:
+         return dark;
+   }
 };
