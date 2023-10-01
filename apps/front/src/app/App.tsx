@@ -28,9 +28,11 @@ export function App() {
    const [quote, setQuote] = useState<undefined | string>();
 
    const getQuote = async () => {
-      const response = await fetch('https://api.quotable.io/quotes/random');
+      const response = await fetch(
+         `${import.meta.env.VITE_API_URI}/quotes/random`,
+      );
       if (response.ok) {
-         const quote = (await response.json())[0];
+         const quote = await response.json();
          setQuote(quote.content);
          setState(State.LOADED);
       } else {
