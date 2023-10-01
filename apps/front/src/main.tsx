@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { ThemeProvider, Global, css } from '@emotion/react';
 
-import { dark } from './themes';
+import { dark } from './assets/themes';
 import App from './app/App';
 
 const root = ReactDOM.createRoot(

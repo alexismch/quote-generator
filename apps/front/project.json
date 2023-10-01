@@ -1,7 +1,7 @@
 {
    "name": "front",
-   "$schema": "../node_modules/nx/schemas/project-schema.json",
-   "sourceRoot": "front/src",
+   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+   "sourceRoot": "src",
    "projectType": "application",
    "targets": {
       "build": {
@@ -9,7 +9,7 @@
          "outputs": ["{options.outputPath}"],
          "defaultConfiguration": "production",
          "options": {
-            "outputPath": "dist/front"
+            "outputPath": "dist/apps/front"
          },
          "configurations": {
             "development": {
@@ -57,14 +57,14 @@
          "outputs": ["{options.reportsDirectory}"],
          "options": {
             "passWithNoTests": true,
-            "reportsDirectory": "../coverage/front"
+            "reportsDirectory": "../../coverage/apps/front"
          }
       },
       "lint": {
          "executor": "@nx/linter:eslint",
          "outputs": ["{options.outputFile}"],
          "options": {
-            "lintFilePatterns": ["front/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": ["apps/front/**/*.{ts,tsx,js,jsx}"]
          }
       }
    },
