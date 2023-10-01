@@ -1,40 +1,66 @@
 /** @jsxImportSource @emotion/react */
 import styled from '@emotion/styled';
+import { useEffect, useState } from 'react';
+import { css } from '@emotion/react';
+import { Button, Loader } from '../components';
 
 const Container = styled.div`
    text-align: center;
-   min-height: 100vh;
+   min-height: calc(100vh - 100px);
    display: flex;
    align-items: center;
    justify-content: center;
    flex-direction: column;
    font-size: calc(10px + 2vmin);
+   padding: 50px;
 `;
 
-const Button = styled.button`
-   height: 50px;
-   width: 150px;
-   background: none;
-   border: 2px solid;
-   border-radius: 5px;
-   font-weight: bold;
-   font-size: 15px;
-   color: ${(props) => props.theme.colors.primary};
-   border-color: ${(props) => props.theme.colors.primary};
-   text-transform: uppercase;
+enum State {
+   LOADING = 'loading',
 
-   :hover {
-      cursor: pointer;
-      color: ${(props) => props.theme.colors.background};
-      background: ${(props) => props.theme.colors.primary};
-   }
-`;
+   LOADED = 'loaded',
+
+   ERROR = 'error',
+}
 
 export function App() {
+   const [state, setState] = useState<State>(State.LOADING);
+   const [quote, setQuote] = useState<undefined | string>();
+
+   const getQuote = async () => {
+      const response = await fetch('https://api.quotable.io/quotes/random');
+      if (response.ok) {
+         const quote = (await response.json())[0];
+         setQuote(quote.content);
+         setState(State.LOADED);
+      } else {
+         setQuote(undefined);
+         setState(State.ERROR);
+      }
+   };
+
+   useEffect(() => {
+      getQuote();
+   }, []);
+
    return (
       <Container>
-         <p>That's my quote</p>
-         <Button>Next</Button>
+         <p
+            css={css`
+               margin: 2.5rem 0;
+            `}>
+            {state === State.LOADING && <Loader />}
+            {state === State.LOADED && quote}
+            {state === State.ERROR && 'An error occurred...'}
+         </p>
+         <Button
+            onClick={(e) => {
+               e.preventDefault();
+               setState(State.LOADING);
+               getQuote();
+            }}>
+            Next
+         </Button>
       </Container>
    );
 }
