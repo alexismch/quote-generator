@@ -1,22 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
 import { IQuoteResponse } from '@quote-generator/shared';
 
-import { Button, Loader } from '../components';
-
-const Container = styled.div`
-   text-align: center;
-   min-height: calc(100vh - 100px);
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   flex-direction: column;
-   font-size: calc(10px + 2vmin);
-   padding: 50px;
-`;
+import { Button, Container, Loader } from '../../components';
 
 enum State {
    LOADING = 'loading',
@@ -26,13 +14,14 @@ enum State {
    ERROR = 'error',
 }
 
-export function App() {
+export const Authenticated = () => {
    const [state, setState] = useState<State>(State.LOADING);
    const [quote, setQuote] = useState<undefined | string>();
 
    const getQuote = async () => {
       const response = await fetch(
          `${import.meta.env.VITE_API_URI}/quotes/random`,
+         { credentials: 'include' },
       );
       if (response.ok) {
          const quote: IQuoteResponse = await response.json();
@@ -68,6 +57,6 @@ export function App() {
          </Button>
       </Container>
    );
-}
+};
 
-export default App;
+export default Authenticated;
