@@ -1,7 +1,3 @@
-export interface IRegisterResponse {
-   id: string;
+import { IAuthUserResponse } from './auth-user.response.interface';
 
-   email: string;
-
-   username?: string;
-}
+export interface IRegisterResponse extends IAuthUserResponse {}
