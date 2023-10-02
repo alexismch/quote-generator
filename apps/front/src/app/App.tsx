@@ -2,6 +2,9 @@
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
+
+import { IQuoteResponse } from '@quote-generator/shared';
+
 import { Button, Loader } from '../components';
 
 const Container = styled.div`
@@ -32,7 +35,7 @@ export function App() {
          `${import.meta.env.VITE_API_URI}/quotes/random`,
       );
       if (response.ok) {
-         const quote = await response.json();
+         const quote: IQuoteResponse = await response.json();
          setQuote(quote.content);
          setState(State.LOADED);
       } else {

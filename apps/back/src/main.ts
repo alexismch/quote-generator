@@ -1,6 +1,8 @@
-import { Logger } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
+import cookieParser from 'cookie-parser';
+import helmet from 'helmet';
 
 import { CoreModule } from './core.module';
 
@@ -15,6 +17,22 @@ async function bootstrap() {
          : '*',
       credentials: true,
    });
+
+   // Middlewares
+   app.use(cookieParser(configService.get('COOKIE_SECRET')));
+   app.use(helmet());
+
+   // = Global Pipes
+   app.useGlobalPipes(
+      new ValidationPipe({
+         whitelist: true,
+         transform: true,
+         validationError: {
+            target: false,
+            value: false,
+         },
+      }),
+   );
 
    app.enableShutdownHooks();
 

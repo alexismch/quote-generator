@@ -8,7 +8,8 @@
       "jsxImportSource": "@emotion/react",
       "types": ["vite/client", "vitest"],
       "paths": {
-         "react": ["./node_modules/@types/react"]
+         "react": ["./node_modules/@types/react"],
+         "@quote-generator/shared": ["libs/shared/src/index.ts"]
       }
    },
    "files": [],

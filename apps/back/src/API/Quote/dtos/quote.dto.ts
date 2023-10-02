@@ -1,6 +1,8 @@
+import { IQuoteResponse } from '@quote-generator/shared';
+
 import { IQuote } from '../../../Domain/Quote/interfaces';
 
-export class QuoteDTO {
+export class QuoteDTO implements IQuoteResponse {
    id: string;
 
    author: string;
