@@ -12,7 +12,7 @@ root.render(
    <StrictMode>
       <ThemeProvider>
          <Global
-            styles={(props) => {
+            styles={(theme) => {
                return css`
                   html,
                   body {
@@ -21,8 +21,8 @@ root.render(
                      font-family: -apple-system, BlinkMacSystemFont, Segoe UI,
                         Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
                         Helvetica Neue, sans-serif;
-                     background: ${props.colors.background};
-                     color: ${props.colors.color};
+                     background: ${theme.colors.background};
+                     color: ${theme.colors.color};
                   }
                `;
             }}

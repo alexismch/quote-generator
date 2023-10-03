@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 
 import { IQuoteResponse } from '@quote-generator/shared';
 
-import { Button, Container, Loader } from '../../components';
+import { Button, Loader } from '../../components';
 
 enum State {
    LOADING = 'loading',
@@ -38,7 +38,7 @@ export const Authenticated = () => {
    }, []);
 
    return (
-      <Container>
+      <>
          <p
             css={css`
                margin: 2.5rem 0;
@@ -55,7 +55,7 @@ export const Authenticated = () => {
             }}>
             Next
          </Button>
-      </Container>
+      </>
    );
 };
 

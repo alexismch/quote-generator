@@ -12,7 +12,7 @@ declare module '@emotion/react' {
          background: string;
          color: string;
          primary: string;
-         secondary: string;
+         blue: string;
          purple: string;
          red: string;
          green: string;
@@ -41,8 +41,8 @@ export const light: ThemeType = {
       ...base.colors,
       background: base.colors.white,
       color: base.colors.black,
-      primary: '#006f91',
-      secondary: '#b25602',
+      primary: '#b25602',
+      blue: '#006f91',
       purple: '#84019a',
       red: '#a90120',
       green: '#01a167',
@@ -54,8 +54,8 @@ export const dark: ThemeType = {
       ...base.colors,
       background: base.colors['dark-grey'],
       color: base.colors.white,
-      primary: '#6CCAFF',
-      secondary: '#FFAA5C',
+      primary: '#FFAA5C',
+      blue: '#6CCAFF',
       purple: '#F2A5FF',
       red: '#F35673',
       green: '#00FEA3',

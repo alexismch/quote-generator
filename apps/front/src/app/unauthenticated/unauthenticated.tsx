@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
-import { useAuthenticationContext } from '../../contexts';
 import { useState } from 'react';
-import { Button, Container, Input } from '../../components';
 import { css } from '@emotion/react';
+
+import { useAuthenticationContext } from '../../contexts';
+import { Button, Input } from '../../components';
 
 export const Unauthenticated = () => {
    const [login, setLogin] = useState('');
@@ -16,14 +17,23 @@ export const Unauthenticated = () => {
    };
 
    return (
-      <Container>
+      <form
+         onSubmit={handleLogin}
+         css={css`
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+         `}>
          <Input
             placeholder="login"
+            autoComplete="username"
             value={login}
             onChange={(e) => setLogin(e.target.value)}
          />
          <Input
             placeholder="password"
+            autoComplete="current-password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -31,8 +41,8 @@ export const Unauthenticated = () => {
                margin: 1rem 0 2.5rem 0;
             `}
          />
-         <Button onClick={handleLogin}>Login</Button>
-      </Container>
+         <Button type="submit">Login</Button>
+      </form>
    );
 };
 

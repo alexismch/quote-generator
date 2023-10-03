@@ -56,7 +56,7 @@ export const AuthenticationProvider = ({ children }: any) => {
             credentials: 'include',
          })
             .then<IAuthResponse>((r) => r.json())
-            .then((v) => setIsAuthenticated(v.type === AuthType.SUCCESS));
+            .then((v) => setIsAuthenticated(!(v.type === AuthType.SUCCESS)));
       }
    };
 
