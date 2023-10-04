@@ -1,0 +1,22 @@
+# Fichier docker-compose à utiliser UNIQUEMENT en DEV
+version: '3.9'
+services:
+  back:
+    container_name: q-back
+    image: q-back
+    env_file:
+      - ./apps/back/.env
+    ports:
+      - "3000:3000"
+    tty: true
+
+  front:
+    container_name: q-front
+    image: q-front
+    env_file:
+      - ./apps/front/.env
+    ports:
+      - "4200:4200"
+    tty: true
+    depends_on:
+      - back

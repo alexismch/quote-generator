@@ -27,3 +27,25 @@ Or start both with :
 ```
 yarn nx start
 ```
+
+### Docker
+
+Also, if you want ro start the production projects within Docker...
+
+First build the containers :
+
+```
+yarn build:docker
+```
+
+Then, start them :
+
+```
+docker-compose up
+```
+
+Or do both with :
+
+```
+yarn start:docker
+```

@@ -67,6 +67,11 @@
          "options": {
             "lintFilePatterns": ["apps/front/**/*.{ts,tsx,js,jsx}"]
          }
+      },
+      "docker-build": {
+         "dependsOn": ["build"],
+         "defaultConfiguration": "production",
+         "command": "docker build -f apps/front/Dockerfile . -t q-front"
       }
    },
    "tags": []

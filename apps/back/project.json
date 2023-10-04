@@ -43,6 +43,11 @@
          "options": {
             "lintFilePatterns": ["apps/back/**/*.ts"]
          }
+      },
+      "docker-build": {
+         "dependsOn": ["build"],
+         "defaultConfiguration": "production",
+         "command": "docker build -f apps/back/Dockerfile . -t q-back"
       }
    },
    "tags": []

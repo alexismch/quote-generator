@@ -3,9 +3,11 @@
    "version": "0.0.0",
    "license": "MIT",
    "scripts": {
+      "build:docker": "nx run-many --parallel --target=docker-build",
       "start": "nx run-many --parallel --target=serve",
       "start:front": "nx serve front",
       "start:back": "nx serve back",
+      "start:docker": "yarn build:docker && docker-compose up",
       "affected:lint": "nx affected:lint",
       "format:check": "nx format:check",
       "format:write": "nx format:write",
