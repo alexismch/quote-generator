@@ -10,4 +10,4 @@ COPY dist/apps/front .
 RUN ["yarn", "global", "add", "serve"]
 RUN ["yarn"]
 
-CMD [ "serve", "-s" ]
+CMD [ "serve", "-s", "-n" ]
