@@ -1,4 +1,3 @@
-# Fichier docker-compose à utiliser UNIQUEMENT en DEV
 version: '3.9'
 services:
   back:
